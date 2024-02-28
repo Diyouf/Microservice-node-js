@@ -23,18 +23,20 @@ app.post('/posts', (req, res) => {
         id,
         title
     }
+
+    axios.post('http://localhost:3003/events', {
+        type: 'PostCreated',
+        data: {
+            id, title
+        }
+    })
     res.status(201).json(post)
 })
 
-axios.post('http://localhost:3005/events', {
-    type: 'postCreate',
-    data: {
-        id, title
-    }
-})
 
-app.post('/events',(req,res)=>{
-    console.log('event recived ', req.body.type)
+
+app.post('/events', (req, res) => {
+    console.log('Event recived ', req.body.type)
     res.send({})
 })
 

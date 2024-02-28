@@ -22,8 +22,8 @@ app.post('/posts/:id/comments', (req, res) => {
     comments.push({ id: commentId, content })
     commentsByPostId[req.params.id] = comments
 
-    axios.post('http://localhost:3004/events',{
-        type:'commentCreated',
+    axios.post('http://localhost:3003/events',{
+        type:'CommentCreated',
         data :{
             id : commentId,
             content ,
@@ -32,6 +32,11 @@ app.post('/posts/:id/comments', (req, res) => {
     })
 
     res.status(201).send(comments)
+})
+
+app.post('/events',(req, res)=>{
+    console.log('Evnet recieved' , req.body.type);
+    res.send({})
 })
 
 app.listen(3001, () => {
