@@ -12,10 +12,11 @@ app.post('/events', (req, res) => {
     axios.post('http://localhost:3000/events', event)
     axios.post('http://localhost:3001/events', event)
     axios.post('http://localhost:3002/events', event)
+    axios.post('http://localhost:3003/events', event)
 
     res.send({ status: 'ok' })
 
 })
-app.listen(3003, () => {
-    console.log('server running at 3003')
+app.listen(3004, () => {
+    console.log('server running at 3004')
 })
